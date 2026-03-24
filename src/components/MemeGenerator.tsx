@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import wtfTapeImg from "@/assets/wtf-tape.png";
 import { Upload, Download, RotateCw, RotateCcw, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Plus, Minus, RefreshCw } from "lucide-react";
 
 interface TapeState {
