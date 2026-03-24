@@ -13,7 +13,7 @@ interface TapeState {
 const MemeGenerator = () => {
   const [image, setImage] = useState<string | null>(null);
   const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
-  const [tape, setTape] = useState<TapeState>({ x: 50, y: 60, width: 200, height: 60, rotation: 0 });
+  const [tape, setTape] = useState<TapeState>({ x: 50, y: 60, width: 160, height: 60, rotation: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -34,7 +34,7 @@ const MemeGenerator = () => {
         const w = maxW;
         const h = img.height * scale;
         setImgSize({ w, h });
-        setTape({ x: w / 2 - 100, y: h / 2 - 25, width: 200, height: 50, rotation: 0 });
+        setTape({ x: w / 2 - 80, y: h / 2 - 25, width: 160, height: 50, rotation: 0 });
       };
       img.src = src;
     };
@@ -185,8 +185,6 @@ const MemeGenerator = () => {
                 }}
               >
                 <img src={wtfTapeImg} alt="WTF!" className="w-full h-full object-fill select-none pointer-events-none" />
-                {/* Selection border */}
-                <div className="absolute inset-0 border-2 border-primary/60 pointer-events-none" />
               </div>
             </div>
 
