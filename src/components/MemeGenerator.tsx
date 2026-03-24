@@ -136,11 +136,6 @@ const MemeGenerator = () => {
         link.click();
       };
       tapeImg.src = wtfTapeImg;
-
-      const link = document.createElement("a");
-      link.download = "wtf-meme.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
     };
     img.src = image;
   };
