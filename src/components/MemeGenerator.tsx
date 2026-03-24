@@ -187,14 +187,7 @@ const MemeGenerator = () => {
                   transformOrigin: "center center",
                 }}
               >
-                <div className="w-full h-full bg-foreground flex items-center justify-center shadow-lg">
-                  <span
-                    className="text-background font-display tracking-wider select-none"
-                    style={{ fontSize: tape.height * 0.6 }}
-                  >
-                    WTF!
-                  </span>
-                </div>
+                <img src={wtfTapeImg} alt="WTF!" className="w-full h-full object-fill select-none pointer-events-none" />
                 {/* Selection border */}
                 <div className="absolute inset-0 border-2 border-primary/60 pointer-events-none" />
               </div>
