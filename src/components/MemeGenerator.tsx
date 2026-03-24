@@ -115,25 +115,27 @@ const MemeGenerator = () => {
       const ctx = canvas.getContext("2d")!;
       ctx.drawImage(img, 0, 0);
 
-      // Draw tape
-      const cx = (tape.x + tape.width / 2) * scaleX;
-      const cy = (tape.y + tape.height / 2) * scaleY;
-      const tw = tape.width * scaleX;
-      const th = tape.height * scaleY;
+      // Draw tape using the WTF image
+      const tapeImg = new Image();
+      tapeImg.crossOrigin = "anonymous";
+      tapeImg.onload = () => {
+        const cx = (tape.x + tape.width / 2) * scaleX;
+        const cy = (tape.y + tape.height / 2) * scaleY;
+        const tw = tape.width * scaleX;
+        const th = tape.height * scaleY;
 
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate((tape.rotation * Math.PI) / 180);
-      ctx.fillStyle = "#1a1a1a";
-      ctx.fillRect(-tw / 2, -th / 2, tw, th);
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate((tape.rotation * Math.PI) / 180);
+        ctx.drawImage(tapeImg, -tw / 2, -th / 2, tw, th);
+        ctx.restore();
 
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `bold ${th * 0.65}px 'Bebas Neue', 'Arial Black', sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.letterSpacing = "0.05em";
-      ctx.fillText("WTF!", 0, 0);
-      ctx.restore();
+        const link = document.createElement("a");
+        link.download = "wtf-meme.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      };
+      tapeImg.src = wtfTapeImg;
 
       const link = document.createElement("a");
       link.download = "wtf-meme.png";
