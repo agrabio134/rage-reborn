@@ -42,7 +42,7 @@ const Hero = () => {
           <span className="text-muted-foreground text-xs font-body">CA:</span>
           <span className="text-foreground text-xs md:text-sm font-mono truncate flex-1 text-left">{CA}</span>
           {copied ? (
-            <Check className="w-5 h-5 text-green-400 shrink-0" />
+            <Check className="w-5 h-5 text-primary shrink-0" />
           ) : (
             <Copy className="w-5 h-5 text-muted-foreground group-hover:text-primary shrink-0 transition-colors" />
           )}
