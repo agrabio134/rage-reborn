@@ -3,66 +3,71 @@ import wtfLogo from "@/assets/wtf-logo.png";
 const loreEntries = [
   {
     title: "THE LAUNCH",
-    text: "$WTF launched like any other memecoin on Solana. The dev hyped it up, the community bought in, vibes were immaculate. Everyone thought this was going to be the next big thing.",
-    emoji: "🚀",
+    text: "$WTF launched like any other memecoin on Solana. The dev hyped it up, the community bought in, vibes were immaculate.",
+    icon: "🚀",
+    num: "01",
   },
   {
     title: "THE BETRAYAL",
-    text: "Then the dev did what devs do — sold from external wallets. Dumped bags on the community. Classic rug playbook. The chart nuked. Paper hands folded. It looked like it was over.",
-    emoji: "🔪",
+    text: "Then the dev did what devs do — sold from external wallets. Dumped bags on the community. Classic rug playbook.",
+    icon: "🔪",
+    num: "02",
   },
   {
     title: "THE RAGE",
-    text: "But the community didn't cry. They got ANGRY. WTF! became the battle cry. Diamond hands emerged from the chaos. A movement was born from pure rage and determination.",
-    emoji: "😤",
+    text: "But the community didn't cry. They got ANGRY. WTF! became the battle cry. Diamond hands emerged from chaos.",
+    icon: "😤",
+    num: "03",
   },
   {
     title: "THE CTO",
-    text: "Community Takeover. No dev needed. The people took control — new socials, new marketing, new energy. $WTF isn't just a token anymore. It's a statement. We don't need devs. We ARE the project.",
-    emoji: "👊",
+    text: "Community Takeover. No dev needed. The people took control — new socials, new marketing, new energy. We ARE the project.",
+    icon: "👊",
+    num: "04",
   },
   {
     title: "THE FUTURE",
-    text: "100% community owned. 100% community driven. No insiders, no VCs, no dev wallets. Just pure, unfiltered, angry memecoin energy. If you're reading this, you're still early.",
-    emoji: "🔥",
+    text: "100% community owned. No insiders, no VCs, no dev wallets. Just pure, unfiltered, angry memecoin energy. You're still early.",
+    icon: "🔥",
+    num: "05",
   },
 ];
 
 const Lore = () => {
   return (
     <section className="py-24 px-4 relative" id="lore">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-5xl md:text-7xl font-display text-center text-primary text-glow-orange mb-4">
-          THE LORE
-        </h2>
-        <p className="text-center text-muted-foreground mb-16 font-body text-lg">
-          Every legend has an origin story. This one starts with betrayal.
-        </p>
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-primary font-display text-lg tracking-widest">THE ORIGIN</span>
+          <h2 className="text-5xl md:text-7xl font-display text-foreground mt-2">
+            LORE
+          </h2>
+        </div>
 
-        <div className="space-y-8">
+        <div className="space-y-4">
           {loreEntries.map((entry, i) => (
             <div
               key={i}
-              className="bg-card border border-border rounded-lg p-6 md:p-8 hover:border-primary/40 transition-all duration-300 group"
+              className="bg-card border-2 border-border rounded-2xl p-6 md:p-8 hover:border-primary transition-all duration-300 group flex items-start gap-5"
             >
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">{entry.emoji}</span>
-                <div>
-                  <h3 className="text-2xl font-display text-primary mb-2 group-hover:text-glow-orange transition-all">
-                    {entry.title}
-                  </h3>
-                  <p className="text-muted-foreground font-body leading-relaxed">
-                    {entry.text}
-                  </p>
-                </div>
+              <div className="flex flex-col items-center shrink-0">
+                <span className="text-4xl">{entry.icon}</span>
+                <span className="text-muted-foreground/30 font-display text-xs mt-1">{entry.num}</span>
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-display text-foreground mb-1 group-hover:text-primary transition-colors">
+                  {entry.title}
+                </h3>
+                <p className="text-muted-foreground font-body leading-relaxed text-sm md:text-base">
+                  {entry.text}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Big angry emoji */}
         <div className="mt-16 flex justify-center">
-          <img src={wtfLogo} alt="WTF angry emoji" className="w-32 h-32 opacity-20" />
+          <img src={wtfLogo} alt="WTF" className="w-24 h-24 opacity-10 grayscale" />
         </div>
       </div>
     </section>
