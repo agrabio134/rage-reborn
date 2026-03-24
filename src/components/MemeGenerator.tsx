@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import wtfTapeImg from "@/assets/wtf-tape.png";
 import { Upload, Download, RotateCw, RotateCcw, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Plus, Minus, RefreshCw } from "lucide-react";
 
 interface TapeState {
@@ -114,30 +115,27 @@ const MemeGenerator = () => {
       const ctx = canvas.getContext("2d")!;
       ctx.drawImage(img, 0, 0);
 
-      // Draw tape
-      const cx = (tape.x + tape.width / 2) * scaleX;
-      const cy = (tape.y + tape.height / 2) * scaleY;
-      const tw = tape.width * scaleX;
-      const th = tape.height * scaleY;
+      // Draw tape using the WTF image
+      const tapeImg = new Image();
+      tapeImg.crossOrigin = "anonymous";
+      tapeImg.onload = () => {
+        const cx = (tape.x + tape.width / 2) * scaleX;
+        const cy = (tape.y + tape.height / 2) * scaleY;
+        const tw = tape.width * scaleX;
+        const th = tape.height * scaleY;
 
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate((tape.rotation * Math.PI) / 180);
-      ctx.fillStyle = "#1a1a1a";
-      ctx.fillRect(-tw / 2, -th / 2, tw, th);
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate((tape.rotation * Math.PI) / 180);
+        ctx.drawImage(tapeImg, -tw / 2, -th / 2, tw, th);
+        ctx.restore();
 
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `bold ${th * 0.65}px 'Bebas Neue', 'Arial Black', sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.letterSpacing = "0.05em";
-      ctx.fillText("WTF!", 0, 0);
-      ctx.restore();
-
-      const link = document.createElement("a");
-      link.download = "wtf-meme.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
+        const link = document.createElement("a");
+        link.download = "wtf-meme.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      };
+      tapeImg.src = wtfTapeImg;
     };
     img.src = image;
   };
@@ -186,14 +184,7 @@ const MemeGenerator = () => {
                   transformOrigin: "center center",
                 }}
               >
-                <div className="w-full h-full bg-foreground flex items-center justify-center shadow-lg">
-                  <span
-                    className="text-background font-display tracking-wider select-none"
-                    style={{ fontSize: tape.height * 0.6 }}
-                  >
-                    WTF!
-                  </span>
-                </div>
+                <img src={wtfTapeImg} alt="WTF!" className="w-full h-full object-fill select-none pointer-events-none" />
                 {/* Selection border */}
                 <div className="absolute inset-0 border-2 border-primary/60 pointer-events-none" />
               </div>
