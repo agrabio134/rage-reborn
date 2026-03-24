@@ -34,7 +34,7 @@ const MemeGenerator = () => {
         const w = maxW;
         const h = img.height * scale;
         setImgSize({ w, h });
-        setTape({ x: w / 2 - 100, y: h / 2 - 25, width: 200, height: 50, rotation: 0 });
+        setTape({ x: w / 2 - 80, y: h / 2 - 25, width: 160, height: 50, rotation: 0 });
       };
       img.src = src;
     };
