@@ -13,7 +13,7 @@ interface TapeState {
 const MemeGenerator = () => {
   const [image, setImage] = useState<string | null>(null);
   const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
-  const [tape, setTape] = useState<TapeState>({ x: 50, y: 60, width: 200, height: 60, rotation: 0 });
+  const [tape, setTape] = useState<TapeState>({ x: 50, y: 60, width: 160, height: 60, rotation: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
